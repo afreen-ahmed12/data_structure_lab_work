@@ -1,7 +1,7 @@
 PROGRAM 01
 program for Linear Search
-//KHADIJA RIZVI
-//Admission no. 2021b0101155
+//AFREEN AHMED
+//Admission no. 2021b0101141
 #include <iostream>
 using namespace std;
 int linearSearch(int arr[],int n, int key)
