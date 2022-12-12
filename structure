@@ -259,3 +259,54 @@ int main()
 }
 
 PROGRAM-10
+#include <iostream>
+using namespace std;
+
+    struct student
+    {
+        long int accno;
+        char name[100] ;
+        float balance;
+       
+
+    };
+int main()
+{
+    struct student s[20];
+    for(int i = 0 ; i<20 ; i++){
+    cin>>s[i].accno;
+    cin>>s[i].name;
+    cin>>s[i].balance;
+   
+    }
+    for(int i = 0 ; i<5 ; i++){
+    cout<<s[i].accno<<endl;
+    fflush(stdin);
+    cout<<s[i].name<<endl;
+    cout<<s[i].balance<<endl;
+    }
+    return 0;
+}
+
+PROGRAM-11
+//11. Write a program to compare two dates entered by user. Make a structure named Date to store the elements day, month and year to store the dates. If the dates are equal, display "Dates are equal" otherwise display "Dates are not equal".
+  #include <iostream>
+using namespace std;
+struct Date
+{
+    int day ;
+    int month ;
+    int year;
+
+};
+int main()
+{
+    struct Date D1 = {11,3,2010};
+    struct Date D2 = {7,8,2010};
+    if(D1.day==D1.day && D1.month==D2.month && D1.year==D2.year)
+    cout<<"Dates are equal";
+    else
+    cout<<"Dates are not equal";
+  return 0;
+
+}     
