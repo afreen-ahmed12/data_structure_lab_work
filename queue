@@ -86,6 +86,200 @@ namespace ConsoleApplication1
         }
     }
 }
+
+PROGRAM-03
+//Programs to implement a double ended queue ADT using arrays
+
+#include
+#define SIZE 30
+int dequeue[SIZE];
+int front=-1,rear=-1; /* initializing front and rear*/
+
+void insertrear(int);
+void deletefront();
+void insertfront(int);
+
+void deleterear();
+void traverse();
+
+/*main program*/
+void main()
+{
+
+int choice,item;
+char ch;
+do
+{
+printf("\n options are");
+
+printf("\n press 1 to insert at rear");
+printf("\n press 2 to delete at front");
+
+printf("\n press 3 to insert at front");
+printf("\n press 4 to delete at rear");
+scanf("%d",&choice);
+
+switch(choice) /*switch case*/
+{
+case 1: printf("\n enter the element:");
+scanf("%d",&item);
+
+
+insertrear(item); /*function call for inserting element at rear*/ break;
+case 2: deletefront(); /*function call for deleting element at front*/
+
+break;
+case 3: printf("enter the element:");
+scanf("%d",&item);
+
+insertfront(item); /*function call for inserting element at front*/ break;
+
+case 4: deleterear();/*function call for deleting element at rear*/ break;
+
+case 5: traverse(); /*traversing the list*/
+break;
+default : printf("wrong choice");
+} /*end of switch case*/
+printf("\n do you want to perform more operations?(Y/N):");
+
+fflush(stdin);
+scanf(" %c",&ch);
+} while(ch=='Y'||ch=='y');
+}
+
+/*insertion at rear*/
+void insertrear(int value) /*function definition*/
+
+{
+if(rear==(SIZE-1))
+{
+
+printf("overflow");
+return;
+}
+else
+{
+
+if(front==-1)
+{
+printf("underflow so front will be modified");
+front=front+1;
+}
+rear=rear+1;
+dequeue[rear]=value;
+
+}
+}
+
+/*deletion at front*/
+void deletefront() /*function definition*/
+
+{
+int value;
+if(front==-1)
+{
+printf("queue is already empty");
+
+value=-1;
+}
+else
+{
+value=dequeue[front];
+
+if(front==rear)
+{
+printf("queue contains only one item");
+rear=-1;
+front=-1;
+}
+else
+
+front=front+1;
+}
+printf("removed element from front is %d",value);
+}
+
+/*insertion at front*/
+void insertfront(int value) /*function definition*/
+{
+if(front==0)
+
+{
+printf("front is at the beginning");
+printf("here insertion is not possible");
+return;
+}
+
+else
+{
+if(front==-1)
+{
+printf("queue is empty so both pointers will modified");
+
+front=front+1;
+rear=rear+1;
+
+}
+else
+{
+
+front=front-1;
+}
+dequeue[front]=value;
+}
+}
+
+/*deletion at rear*/
+void deleterear() /*function definition*/
+{
+
+int value;
+if(front==-1)
+{
+
+printf("queue is already empty");
+return;
+}
+else
+{
+
+value=dequeue[rear];
+if(rear==front)
+{
+printf("queue contains only one item");
+printf("rear and front will be modified");
+
+rear=-1;
+front=-1;
+}
+else
+{
+
+rear=rear-1;
+}
+}
+printf("\n the removed element from rear is:%d",value);
+}
+
+/*traverse operation*/
+void traverse() /*function definition*/
+
+{
+int i;
+if(front==-1)
+{
+printf("queue empty");
+return;
+
+}
+else
+{
+
+printf("\n value in the queue are as follow:");
+for(i=front;i<=rear;i++)
+printf("\n%d",dequeue[i]);
+}
+}
 PRIORITY QUEUE PROGRAM
 #include<stdio.h>
 int n;
