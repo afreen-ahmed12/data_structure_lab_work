@@ -380,3 +380,154 @@ int main(){
     printf("%d\n",max);
     return 0;
 }
+                                                           
+PROGRAM -01
+Program for stack primitive operations
+#include<stdio.h>
+#include<stdlib.h>
+
+int n, top = -1, *stack;
+
+void push(int x){
+	if(top==n) return;
+	stack[++top]=x;
+}
+
+int pop(){
+	if(top==-1) return -1;
+	return stack[top--];
+}
+
+int peek(){
+	if(top==-1) return -1;
+	return stack[top];
+}
+
+void display(){
+	for(int i=top ; i>-1 ; i--) printf("%d ",stack[i]);
+	printf("\n\n");
+}
+
+int main(){
+	
+	n = 10;
+	
+	printf("Initializing the stack with size 10\n\n");
+	
+	stack = (int*)malloc(n*sizeof(int));
+	
+	printf("Pushing elements into the stack\n1\n2\n3\n\n");
+	
+	push(1);
+	push(2);
+	push(3);
+	
+	printf("Displaying elements of the stack -\n");
+	
+	display();
+	
+	printf("The top of the stack = %d\n\n",peek());
+	
+	printf("Pop the top of the stack = %d\n\n",pop());
+	
+	printf("Pop the top of the stack = %d\n\n",pop());
+	
+	printf("Displaying elements of the stack -\n");
+	
+	display();
+	
+	return 0;
+}
+
+PROGRAM -02
+Program for Decimal to Binary Conversion
+
+#include<stdio.h>
+#include<stdlib.h>
+#define MAX 50
+
+int isEmpty(int top, int stack_arr[]);
+void push(int x, int *top, int stack_arr[]);
+int pop(int *top, int stack_arr[]);
+void DecToBin(int num);
+
+int main()
+{
+        int num;
+        printf("Enter an integer : ");
+        scanf("%d",&num);
+        printf("Binary Equivalent is : ");
+        DecToBin(num);
+
+        return 0;
+
+}
+void DecToBin(int num)
+{
+        int stack[MAX], top=-1, rem;
+        while(num!=0)
+        {
+                rem = num%2;
+                push(rem, &top, stack);
+                num/=2;
+        }
+        while(top!=-1)
+                printf("%d", pop(&top, stack));
+        printf("\n");
+}
+
+void push(int x, int *top, int stack_arr[])
+{
+        if(*top == (MAX-1))
+                printf("Stack Overflow\n");
+        else
+        {
+                *top=*top+1;
+                stack_arr[*top] = x;
+        }
+}
+
+int pop(int *top, int stack_arr[])
+{
+        int x;
+        if(*top == -1)
+        {
+                printf("Stack Underflow\n");
+                exit(1);
+        }
+        else
+        {
+                x = stack_arr[*top];
+                *top=*top-1;
+        }
+        return x;
+}
+
+PROGRAM-03
+Program for decimal to octal conversion.
+
+#include <stdio.h>
+ 
+int main()
+{
+    long decimalnum, remainder, quotient,octalnum=0;
+    int octalNumber[100], i = 1, j;
+ 
+    printf("Enter the decimal number: ");
+    scanf("%d", &decimalnum);
+    quotient = decimalnum;
+ 
+    //Storing remainders until number is equal to zero
+    while (quotient != 0)
+    {
+        octalNumber[i++] = quotient % 8;
+        quotient = quotient / 8;
+    }
+ 
+    //Converting stored remainder values in corresponding octal number
+    for (j = i - 1; j > 0; j--)
+        octalnum = octalnum*10 + octalNumber[j];
+    printf("Equivalent octal value of decimal no %d is: %d  ", decimalnum,octalnum);
+    return 0;
+}
+
